@@ -1,0 +1,63 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+.container{
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg,#153677,#4e085f);
+    padding: 10px;
+}
+.to-do-app{
+    width: 100%;
+    max-width: 540px;
+    background-color: white;
+    margin: 100px auto 20px;
+    padding: 40px 20px 80px;
+    border-radius: 10px;
+}
+.to-do-app h2{
+    color: #002765;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.to-do-app h2 img{
+    width: 2.5rem;
+    height: 3rem;
+    margin-left: 0.8rem;
+}
+.row{
+    display: flex;
+
+    background-color: #edeef0;
+    border-radius: 1.9rem;
+    justify-content: space-between;
+    margin-bottom: 1.15rem;
+    padding-left: 0.8rem;
+
+    
+
+}
+.row #input-box{
+    flex: 1;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    padding: 0.7rem;
+    font-size: 14px;
+
+}
+.row button{
+    background-color: rgba(255, 94, 0, 0.874);
+    border: none;
+    outline: none;
+    padding: 1rem 2rem;
+    border-radius: 2.5rem;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+}
