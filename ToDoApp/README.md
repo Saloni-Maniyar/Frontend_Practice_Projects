@@ -1,0 +1,1 @@
+A simple To Do App.It helps adding tasks ,removing tasks.Also it can store the task as a local storage in web browser.
