@@ -1,9 +1,9 @@
+let main_content=document.querySelector("#main-content");
 let rangeContainer=document.querySelector(".GetRange");
 let rangeInput=document.getElementById("maxRangeBox");
 let gameContainer=document.querySelector(".game-container");
 let guessInput=document.getElementById("guess");
-
-let allGameDiv=document.querySelectorAll(".game-div");
+let allGameDiv=document.querySelectorAll(".game-div-container");
 let quitDiv=document.querySelector(".quitGame");
 let max,guess,random;
 let msgDiv;
@@ -34,9 +34,11 @@ guessInput.addEventListener("keydown",function(e){
         if(random===guess){
             correctGuess();
         }else{
-           msgDiv=document.createElement("h4");
+            msgDiv=document.createElement("h4");
+            msgDiv.id='msg';
+            // msgDiv.classList.add("wrong-guess-Msg");
             msgDiv.innerHTML="Wrong msg,Please Try again!!";
-            document.body.appendChild(msgDiv);
+            main_content.appendChild(msgDiv);
         }
         guessInput.value='';
     }
@@ -45,17 +47,19 @@ function correctGuess(){
     allGameDiv.forEach(div => div.style.display = "none"); 
     
     let continueDiv=document.createElement("div");
-    continueDiv.classList.add("continue-btn");
-    let h1=document.createElement("h1");
-    h1.innerHTML="Congratulations!! You guess correct number."
-    continueDiv.appendChild(h1);
+    continueDiv.classList.add("continue-div");
+    let congo_msg=document.createElement("h1");
+    congo_msg.id='msg';
+    congo_msg.innerHTML="Congratulations!! You guess correct number."
+    continueDiv.appendChild(congo_msg);
     
     let continueButn=document.createElement("button");
+    continueButn.id='con-btn';
     continueButn.innerHTML="Continue Playing";
     continueDiv.appendChild(continueButn);
-    document.body.appendChild(continueDiv);
+    main_content.appendChild(continueDiv);
     quitDiv.style.display="block";
-    document.body.appendChild(quitDiv);
+    main_content.appendChild(quitDiv);
 
 }
 
