@@ -1,6 +1,56 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    
+}
+#main-content{
+    height: 100vh;
+    width: 100%;
+    /* background-color: rgba(144, 179, 179, 0.583); */
+    background-image: linear-gradient(to bottom right,rgb(43, 46, 112),rgb(103, 2, 103));
+    
+}
+.index-page-content{
+    width: 100%;
+    /* max-width: 540px; */
+    /* height: 100vh; */
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    position: absolute;
+    margin-top: 10rem;
+    /* margin:6rem 6rem 3rem 6rem; */
+    /* background-color: white; */
+    
+}
+#headingMsg{
+    margin: 1rem;
+    padding-bottom: 3rem;
+    color: white;
+    font-weight: 700;
+}
+#playBtn{
+    width: 6rem;
+    background-color:#ea6416;
+    color: white;
+    font-size: 1.25rem;
+    border: none;
+    border-radius: 5rem;
+    padding: 0.25rem 1rem;
+    cursor: pointer;
+    transition:width 1s ease-out 0.4s;
+}
+#playBtn:active{
+    width:7rem;
+    box-shadow:2px 2px 10px whitesmoke;
+}
 .game-container{
     display:none;
 }
 /* .continue-btn{
     display: none;
 } */
+ 
