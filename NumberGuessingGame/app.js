@@ -3,7 +3,8 @@ let rangeContainer=document.querySelector(".GetRange");
 let rangeInput=document.getElementById("maxRangeBox");
 let gameContainer=document.querySelector(".game-container");
 let guessInput=document.getElementById("guess");
-let allGameDiv=document.querySelectorAll(".game-div-container");
+let gameSection=document.querySelector("section");
+let allGameDiv=document.querySelectorAll(".game-div");
 let quitDiv=document.querySelector(".quitGame");
 let max,guess,random;
 let msgDiv;
@@ -38,14 +39,14 @@ guessInput.addEventListener("keydown",function(e){
             msgDiv.id='msg';
             // msgDiv.classList.add("wrong-guess-Msg");
             msgDiv.innerHTML="Wrong msg,Please Try again!!";
-            main_content.appendChild(msgDiv);
+            gameSection.appendChild(msgDiv);
         }
         guessInput.value='';
     }
 });
 function correctGuess(){
-    allGameDiv.forEach(div => div.style.display = "none"); 
-    
+     gameSection.forEach(div => div.style.display = "none"); 
+    // gameSection.style.display="none";
     let continueDiv=document.createElement("div");
     continueDiv.classList.add("continue-div");
     let congo_msg=document.createElement("h1");
@@ -55,12 +56,16 @@ function correctGuess(){
     
     let continueButn=document.createElement("button");
     continueButn.id='con-btn';
-    continueButn.innerHTML="Continue Playing";
+    continueButn.classList.add('btn');
+    continueButn.innerHTML="continue";
+    // continueDiv.style.display="block";
     continueDiv.appendChild(continueButn);
     main_content.appendChild(continueDiv);
-    quitDiv.style.display="block";
-    main_content.appendChild(quitDiv);
-
+    
+    quitDiv.style.display="inline";
+    continueDiv.appendChild(quitDiv);
+    // gameSection.appendChild(continueDiv);
+    
 }
 
 
