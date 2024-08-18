@@ -6,8 +6,11 @@ let guessContainer=document.querySelector(".guess-container");
 let rangeInput=document.getElementById("maxRangeBox");
 let guessInput=document.getElementById("guess");
 let quitDiv=document.querySelector(".quitGame");
+let quitBtn=document.getElementById("quit-btn");
 let max,guessNum,random;
 let msgDiv;
+let Score=[];
+let scount=0
 guessContainer.style.display="none";
 console.log("rangeContaier=",rangeContainer);
 console.log("rangeInput=",rangeInput);
@@ -45,6 +48,7 @@ guessInput.addEventListener("keydown",function(e){
 });
 function correctGuess(){
     console.log("inside correctGuess");
+    scount++;
     divs.forEach(div => div.style.display = "none"); 
     let continueDiv=document.createElement("div");
     continueDiv.classList.add("continue-div");
@@ -71,4 +75,32 @@ function correctGuess(){
     
 }
 
+function quitGame(){
+    addToScoreArray(scount);
+    scount=0;
+    quitBtn.style.display="none";
+    divs.forEach(div=> div.style.display="none");
+    let quitMsg=document.createElement("h1");
+    quitMsg.innerHTML="You Quit!!!";
+    quitMsg.id="Congomsg";
+    gameContainer.style.border="none";
+    gameContainer.style.background="transparent";
+    gameContainer.style.width="fit-content";
+    quitDiv.appendChild(quitMsg);
+    quitDiv.style.display="block";
+    let HighScore=document.createElement("h3");
+    h3.innerHTML=getHighScore();
+    gameContainer.appendChild(quitDiv);
+    
+}
+/*continuedClick(){
+    
+}*/
+const addToScoreArray=scount=>Score.push(scount);
+function getHighScore(){
 
+}
+
+const getHighScore=()=>{
+    
+};
