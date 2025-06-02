@@ -7,10 +7,11 @@ let rangeInput=document.getElementById("maxRangeBox");
 let guessInput=document.getElementById("guess");
 let quitDiv=document.querySelector(".quitGame");
 let quitBtn=document.getElementById("quit-btn");
-let max,guessNum,random;
+let continueDiv=document.createElement("div");
+let max=0,guessNum,random;
 let msgDiv;
 let Score=[];
-let scount=0
+let scount=0;
 guessContainer.style.display="none";
 console.log("rangeContaier=",rangeContainer);
 console.log("rangeInput=",rangeInput);
@@ -50,7 +51,7 @@ function correctGuess(){
     console.log("inside correctGuess");
     scount++;
     divs.forEach(div => div.style.display = "none"); 
-    let continueDiv=document.createElement("div");
+   
     continueDiv.classList.add("continue-div");
     let congo_msg=document.createElement("h1");
     congo_msg.id='Congomsg';
@@ -72,35 +73,80 @@ function correctGuess(){
     gameContainer.style.width="fit-content";
 
     gameContainer.appendChild(continueDiv);
+    //reset game on clicking continue
+    continueButn.addEventListener("click",(e)=>{
+        //clean up previous game 
+        continueDiv.innerHTML='';//clearing continueDiv
+        continueDiv.style.display="none";
+        guessContainer.style.display="none";
+        //Reset game container styles
+        gameContainer.style.removeProperty('border');
+        gameContainer.style.removeProperty('background');
+        gameContainer.style.removeProperty('width');
+        
+        gameContainer.style.display="flex";
+        gameContainer.classList.add("game");
+        
+       
+        
+        
+
+    });
     
 }
 
-function quitGame(){
-    addToScoreArray(scount);
+quitBtn.addEventListener("click",(e)=>{
+    Score.push(scount);
+    const highScore=Score.reduce((max,el)=>Math.max(max,el));
+
     scount=0;
-    quitBtn.style.display="none";
+    if(continueDiv){
+        continueDiv.remove();
+    }
     divs.forEach(div=> div.style.display="none");
+    quitBtn.style.display="none";
     let quitMsg=document.createElement("h1");
-    quitMsg.innerHTML="You Quit!!!";
+    quitMsg.innerHTML=`You Quit!!\nHighScore=${highScore}`;
     quitMsg.id="Congomsg";
     gameContainer.style.border="none";
     gameContainer.style.background="transparent";
     gameContainer.style.width="fit-content";
     quitDiv.appendChild(quitMsg);
-    quitDiv.style.display="block";
-    let HighScore=document.createElement("h3");
-    h3.innerHTML=getHighScore();
     gameContainer.appendChild(quitDiv);
-    
-}
-/*continuedClick(){
-    
-}*/
-const addToScoreArray=scount=>Score.push(scount);
-function getHighScore(){
+    quitDiv.style.display="block";
+});
 
-}
 
-const getHighScore=()=>{
+
+// function quitGame(){
     
-};
+//     addToScoreArray(scount);
+//     scount=0;
+//     divs.forEach(div=> div.style.display="none");
+//     quitBtn.style.display="none";
+    
+//     let quitMsg=document.createElement("h1");
+//     quitMsg.innerHTML="You Quit!!!";
+//     quitMsg.id="Congomsg";
+//     gameContainer.style.border="none";
+//     gameContainer.style.background="transparent";
+//     gameContainer.style.width="fit-content";
+//     quitDiv.appendChild(quitMsg);
+//     quitDiv.style.display="block";
+//     let HighScore=document.createElement("h3");
+//     HighScore.id="HighScoremsg";
+//     const getHighScore=()=>Score.reduce((max,el)=>Math.max(max,el));
+//     console.log("highScore="+getHighScore);
+//     HighScore.innerHTML=`HighScore=${getHighScore()}`;
+//     quitDiv.appendChild(HighScore);
+//     console.log("highscore="+getHighScore());
+//     gameContainer.appendChild(quitDiv);
+    
+// }
+
+// const addToScoreArray=scount=>Score.push(scount);
+// /*continuedClick(){
+    
+// }*/
+
+
